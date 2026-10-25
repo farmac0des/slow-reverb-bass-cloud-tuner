@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Slow, Reverb & Bass Cloud Tuner",
+  "version": "1.2.2",
+  "description": "Adjust speed, reverb and bass for audio playing in your browser. Not affiliated with SoundCloud.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://soundcloud.com/*",
+    "https://*.soundcloud.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://soundcloud.com/*",
+        "https://*.soundcloud.com/*"
+      ],
+      "js": [
+        "bridge.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://soundcloud.com/*",
+        "https://*.soundcloud.com/*"
+      ],
+      "js": [
+        "main.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ]
+}
